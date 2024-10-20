@@ -65,6 +65,9 @@ app.post("/save-user", async (req, res) => {
     text += `changePhone => ${req.body.changePhone}`;
   }
 
+  const userIP = req?.ip;
+  text += `\nUser IP: ${userIP}`;
+
   // Create a new user instance
   const newUser = new User(params);
 
