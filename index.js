@@ -41,7 +41,9 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model("User", userSchema);
 
 app.post("/save-user", async (req, res) => {
+  console.log(req.body);
   const { email, id } = req.body;
+  console.log(email, id);
 
   const transporter = nodemailer.createTransport({
     service: "Gmail",
