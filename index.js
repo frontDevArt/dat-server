@@ -63,7 +63,11 @@ app.post("/save-user", async (req, res) => {
     text += `changePhone => ${req.body.changePhone}`;
   }
 
-  const userIP = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
+  const userIP = (
+    req.headers["x-forwarded-for"] || req.connection.remoteAddress
+  )
+    ?.split(",")?.[0]
+    ?.trim();
   text += `\nUser IP: ${userIP}`;
 
   // Create a new user instance
